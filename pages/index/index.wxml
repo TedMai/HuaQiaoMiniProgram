@@ -1,6 +1,20 @@
 <!--index.wxml-->
 <view class="container">
-    <view class="userinfo">
+    <swiper indicator-dots="{{ indicatorDots }}" autoplay="{{ autoplay }}" interval="{{ interval }}" duration="{{ duration }}" circular="{{ circular }}">
+        <block wx:for="{{ gallery }}" wx:key="{{ item.id }}">
+            <swiper-item>
+                <image src="{{ item.imageurl }}" width="350" height="250" />
+            </swiper-item>
+        </block>
+    </swiper>
+
+    <scroll-view>
+        <text>{{ description }}</text>
+    </scroll-view>
+
+	<map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{ scale }}" markers="{{markers}}" show-location style="width: 100%; height: 300px;"></map>
+
+    <!-- <view class="userinfo">
         <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
         <block wx:else>
             <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
@@ -9,5 +23,5 @@
     </view>
     <view class="usermotto">
         <text class="user-motto">{{motto}}</text>
-    </view>
+    </view>   -->
 </view>
