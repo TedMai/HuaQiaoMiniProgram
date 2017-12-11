@@ -28,7 +28,7 @@ Page({
 		var that = this;
 
 		wx.request({
-			url: __API__.getHospitalDetails('hospital', 26),
+			url: __API__.getTableDetails('hospital', 26),
 			data: {},
 			header: {
 				'content-type': 'application/json'
@@ -104,5 +104,11 @@ Page({
 		// 		}
 		// 	})
 		// }
-	}
+	},
+    toMakeAppointment:function(){
+        wx.navigateTo({
+            url: '/pages/search/department/department'
+        })
+    }
+
 })

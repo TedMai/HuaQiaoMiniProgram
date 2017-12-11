@@ -1,7 +1,9 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/search/department/department",
+    "pages/list/doctor/doctor"
   ],
   "window":{
     "backgroundTextStyle":"light",
