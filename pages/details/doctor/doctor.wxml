@@ -1,0 +1,46 @@
+<!--pages/details/doctor/doctor.wxml-->
+
+<view>
+    <view>
+        <image src='{{ doctor.imageurl }}'></image>
+    </view>
+    <view>
+        <text>{{ doctor.name }}</text>
+        <text>{{ doctor.title }}</text>
+        <text>{{ doctor.position }}</text>
+        <view>
+            <text>简历：</text>
+            <text>{{ doctor.resume }}</text>
+        </view>
+        <view>
+            <text>擅长领域：</text>
+            <text>{{ doctor.field }}</text>
+        </view>
+    </view>
+</view>
+
+<view>
+    <text>医生排班</text>
+
+    <view wx:for='{{ schedules }}' wx:key='{{ item.id }}'>
+        <view>
+            <text>门诊时间</text>
+            <text>{{ item.visiting }}</text>
+            <text wx:if="{{ item.section === 0 }}">上午</text>
+            <text wx:else>下午</text>
+        </view>
+        <view>
+            <text>挂号费</text>
+            <text>{{ item.registerFee }}</text>
+        </view>
+        <view>
+            <text>医疗服务费</text>
+            <text>{{ item.medicalFee }}</text>
+        </view>
+		<button data-schedule='{{ item }}' bindtap='toMakeAppointment'>我要预约</button>
+    </view>
+</view>
+
+<view>
+    <text>评论区</text>
+</view>

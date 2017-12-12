@@ -6,7 +6,7 @@
 </view>
 
 <view class='subordinate'>
-    <view wx:for="{{ subordinateDepartments }}" wx:key="{{ item.id }}" data-departmentid='{{ item.id }}' bindtap='toShowDoctorList'>
+    <view wx:for="{{ subordinateDepartments }}" wx:key="{{ item.id }}" data-department='{{ item }}' bindtap='toShowDoctorList'>
         <text>{{ item.name }}</text>
     </view>
 </view>

@@ -1,0 +1,33 @@
+<!-- pages/appointment/init/init.wxml-->
+<view>
+    <view>
+        <text>{{ doctorName }}</text>
+        <text>{{ departmentName }}</text>
+    </view>
+
+    <view>
+        <text>门诊时间：</text>
+        <text>{{ schedule.visiting }}</text>
+        <view>
+            <text> 门诊类型： </text>
+            <text>专家门诊</text>
+        </view>
+        <view>
+            <text>挂号费用</text>
+            <text>{{ schedule.registerFee }}</text>
+            <text>医疗服务费用</text>
+            <text>{{ schedule.medicalFee }}</text>
+        </view>
+    </view>
+
+    <view data-userid='osCkO0a1sPv2YDNBIAw7wFXlTib4' bindtap='toPatientList'>
+        <text>就诊人</text>
+    </view>
+    <view>
+        <text>初/复诊</text>
+    </view>
+    <view>
+        <text>支付方式</text>
+    </view>
+    <button>确认预约</button>
+</view>

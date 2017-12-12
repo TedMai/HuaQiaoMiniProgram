@@ -1,0 +1,12 @@
+<!--pages/appointment/confirm/confirm.wxml-->
+<view>
+    <view>
+        <text>手机号</text>
+        <input></input>
+    </view>
+    <view>
+        <text>验证码</text>
+        <input></input>
+        <button>获取</button>
+    </view>
+</view>

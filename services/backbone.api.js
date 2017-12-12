@@ -14,7 +14,7 @@ const getImageRequestPrefix = function (filePath) {
 }
 
 const queryRelatives = function (name, id) {
-    return domain + api + '/table/' + name + '/relatives/' + id;
+    return domain + api + 'table/' + name + '/relatives/' + id;
 }
 
 module.exports = {

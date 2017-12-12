@@ -6,73 +6,101 @@ Page({
     /**
      * 页面的初始数据
      */
-    data: {
-
-    },
+	data: {
+		department: {},
+		doctors: []
+	},
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-        wx.request({
-            url: __API__.queryRelatives("doctor", 274),
-            data: {},
-            header: {
-                'content-type': 'application/json'
-            },
-            success: function (response) {
-                console.info(response);
+	onLoad: function (options) {
+		var that = this;
 
-            }
-        })
-    },
+		this.data.department = JSON.parse(options.department);
+
+		wx.request({
+			url: __API__.queryRelatives("doctor", this.data.department.id),
+			data: {},
+			header: {
+				'content-type': 'application/json'
+			},
+			success: function (response) {
+				console.info(response);
+				that.data.doctors = JSON.parse(response.data.doctors).map(doctor => {
+					return {
+						id: doctor.id,
+						name: doctor.name,
+						position: doctor.position,
+						title: doctor.title,
+						resume: doctor.resume,
+						field: doctor.field,
+						imageurl: __API__.getImageRequestPrefix(doctor.imageurl)
+					}
+				});
+
+				that.setData({
+					doctors: that.data.doctors
+				});
+			}
+		})
+	},
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+	onReady: function () {
 
-    },
+	},
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+	onShow: function () {
 
-    },
+	},
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+	onHide: function () {
 
-    },
+	},
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+	onUnload: function () {
 
-    },
+	},
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+	onPullDownRefresh: function () {
 
-    },
+	},
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+	onReachBottom: function () {
 
-    },
+	},
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+	onShareAppMessage: function () {
 
-    }
+	},
+
+	toShowDoctorDetails: function (e) {
+		console.info(e);
+
+		wx.navigateTo({
+			url: '/pages/details/doctor/doctor?doctor=' + JSON.stringify(e.currentTarget.dataset.doctor)
+			+ '&departmentName=' + this.data.department.name
+		})
+	}
 })

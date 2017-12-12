@@ -1,2 +1,13 @@
 <!--pages/list/doctor/doctor.wxml-->
-<text>pages/list/doctor/doctor.wxml</text>
+<view>
+    <view wx:for="{{ doctors }}" wx:key="{{ item.id }}" data-doctor='{{ item }}' bindtap='toShowDoctorDetails'>
+        <view>
+            <image src="{{ item.imageurl }}"></image>
+        </view>
+        <view>
+            <text>{{ item.name }}</text>
+            <text>{{ item.title }}</text>
+        </view>
+        <text>{{ item.field }}</text>
+    </view>
+</view>
