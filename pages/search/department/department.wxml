@@ -1,12 +1,14 @@
 <!--pages/search/department/department.wxml-->
-<view class='superior'>
-    <view wx:for='{{ superiorDepartments }}' wx:key='{{ item.id }}' data-departmentid='{{ item.id }}' bindtap='toShowOrdinateDepartments'>
-        <text>{{ item.name }}</text>
+<view class='container'>
+    <view class='superior'>
+        <view wx:for='{{ superiorDepartments }}' wx:key='{{ item.id }}' data-departmentid='{{ item.id }}' bindtap='toShowOrdinateDepartments' class='superior-item'>
+            <text>{{ item.name }}</text>
+        </view>
     </view>
-</view>
 
-<view class='subordinate'>
-    <view wx:for="{{ subordinateDepartments }}" wx:key="{{ item.id }}" data-department='{{ item }}' bindtap='toShowDoctorList'>
-        <text>{{ item.name }}</text>
+    <view class='subordinate'>
+        <view wx:for="{{ subordinateDepartments }}" wx:key="{{ item.id }}" data-department='{{ item }}' bindtap='toShowDoctorList' class='subordinate-item'>
+            <text>{{ item.name }}</text>
+        </view>
     </view>
 </view>

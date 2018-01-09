@@ -1,1 +1,24 @@
 /* pages/search/department/department.wxss */
+
+page, .container {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.superior,.subordinate{
+    width: 50%;
+    padding: 1rem;
+}
+
+.subordinate{
+    background-color: #CCCCCC;
+}
+
+.superior-item,.subordinate-item{
+    margin: 0.5rem 0;
+}
