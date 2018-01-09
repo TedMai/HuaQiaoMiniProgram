@@ -29,5 +29,5 @@
     <view>
         <text>支付方式</text>
     </view>
-    <button>确认预约</button>
+    <button bindtap='toConfirmAppointment'>确认预约</button>
 </view>

@@ -7,3 +7,4 @@
     <text>{{ item.identity }}</text>
     <text>{{ item.phone }}</text>
 </view>
+
