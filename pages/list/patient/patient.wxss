@@ -1,1 +1,26 @@
 /* pages/list/patient/patient.wxss */
+
+.patient-list, .patient-list-field, .patient-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.patient-list {
+    border-top: 0.1rem solid #ccc;
+    padding: 10px 15px 10px 0;
+}
+
+.patient-list radio {
+    padding-left: 15px;
+}
+
+.patient-list-field {
+    margin: 20px 0;
+}
+
+.patient-bottom {
+    padding: 8px 0 15px 0;
+    background-color: #fff;
+}

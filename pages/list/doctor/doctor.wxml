@@ -1,13 +1,18 @@
 <!--pages/list/doctor/doctor.wxml-->
 <view>
-    <view wx:for="{{ doctors }}" wx:key="{{ item.id }}" data-doctor='{{ item }}' bindtap='toShowDoctorDetails'>
-        <view>
-            <image src="{{ item.imageurl }}"></image>
+    <view wx:for="{{ doctors }}" wx:key="{{ item.id }}" data-doctor='{{ item }}' bindtap='toShowDoctorDetails' class='list-with-graphic'>
+        <view class='list-part-top'>
+            <view class='list-part-left'>
+                <image src="{{ item.imageurl }}"></image>
+            </view>
+            <view class='list-part-right'>
+                <text class='doctor-name'>{{ item.name }}</text>
+                <text class='doctor-title'>{{ item.title }}</text>
+            </view>
         </view>
-        <view>
-            <text>{{ item.name }}</text>
-            <text>{{ item.title }}</text>
+        <view class='list-part-bottom'>
+            <label>擅长领域</label>
+            <text class='doctor-field'>{{ item.field }}</text>
         </view>
-        <text>{{ item.field }}</text>
     </view>
 </view>

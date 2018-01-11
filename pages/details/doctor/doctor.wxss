@@ -1,1 +1,29 @@
 /* pages/details/doctor/doctor.wxss */
+
+.schedule-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+	border-bottom: 0.1rem solid #ccc;
+	padding: 1rem 0.3rem;
+}
+
+.schedule-list-left {
+	width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.schedule-list button{
+	width: 20%;
+	background-color: #09bb07;
+	color: #FFF;
+	margin: 0 1rem;
+}
+
+.schedule-list-field{
+	display: flex;
+    flex-direction: row;
+	justify-content: space-between;
+}

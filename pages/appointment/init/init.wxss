@@ -1,1 +1,26 @@
 /* pages/appointment/init/init.wxss */
+
+.appointment-field {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0.3rem 1rem;
+}
+
+.appointment-field text {
+    font-size: 0.8rem;
+    margin-right: 1rem;
+}
+
+.appointment-rule {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.3rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.appointment-rule text {
+    font-size: 0.7rem;
+}

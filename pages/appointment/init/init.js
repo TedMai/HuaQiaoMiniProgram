@@ -7,7 +7,8 @@ Page({
 	data: {
 		departmentName: '',
 		doctorName: '',
-		schedule: {}
+		schedule: {},
+		patient: {}
 	},
 
 	/**
@@ -21,68 +22,36 @@ Page({
 			doctorName: options.doctorName,
 			schedule: JSON.parse(options.schedule)
 		});
+
+		wx.removeStorage({
+			key: 'patientSelected',
+			success: function (res) { }
+		})
 	},
 
 	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
+	   * 生命周期函数--监听页面显示
+	   */
 	onShow: function () {
+		var that = this;
 
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
+		wx.getStorage({
+			key: 'patientSelected',
+			success: function (res) {
+				that.setData({
+					patient: res.data
+				});
+			}
+		})
 	},
 
 	toPatientList: function (e) {
-		console.info(e);
-
 		wx.navigateTo({
 			url: '/pages/list/patient/patient?userid=' + e.currentTarget.dataset.userid
 		})
 	},
 
 	toConfirmAppointment: function (e) {
-		console.info(e);
-
 		wx.navigateTo({
 			url: '/pages/appointment/confirm/confirm'
 		})

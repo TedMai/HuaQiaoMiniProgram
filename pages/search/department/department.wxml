@@ -1,7 +1,7 @@
 <!--pages/search/department/department.wxml-->
 <view class='container'>
     <view class='superior'>
-        <view wx:for='{{ superiorDepartments }}' wx:key='{{ item.id }}' data-departmentid='{{ item.id }}' bindtap='toShowOrdinateDepartments' class='superior-item'>
+        <view wx:for='{{ superiorDepartments }}' wx:key='{{ item.id }}' data-departmentid='{{ item.id }}' bindtap='toShowOrdinateDepartments' class='superior-item' style='background-color: {{ item.backgroundColor }}'>
             <text>{{ item.name }}</text>
         </view>
     </view>

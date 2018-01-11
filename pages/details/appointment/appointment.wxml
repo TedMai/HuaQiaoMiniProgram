@@ -1,0 +1,3 @@
+<!--pages/details/appointment/appointment.wxml-->
+
+<button type='primary' class='btn-fixed-bottom' bindtap='backToIndex'>回到首页</button>

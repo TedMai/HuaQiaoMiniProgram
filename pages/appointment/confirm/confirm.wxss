@@ -1,1 +1,8 @@
 /* pages/appointment/confirm/confirm.wxss */
+
+.fetch-verification-code {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+	padding-right: 25px;
+}

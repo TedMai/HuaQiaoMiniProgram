@@ -21,8 +21,20 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 1,
+			"list": [
+				{
+					"id": -1,
+					"name": "新增就诊人",
+					"pathName": "pages/create/patient/patient",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "确认预约",
+					"pathName": "pages/appointment/confirm/confirm"
+				}
+			]
 		}
 	}
 }

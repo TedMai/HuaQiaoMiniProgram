@@ -23,61 +23,38 @@ Page({
 				'content-type': 'application/json'
 			},
 			success: function (response) {
-				console.info(response.data.doctors);
+				// 	初始化
+				const rawData = JSON.parse(response.data.patients);
+				if (rawData instanceof Array && rawData.length > 0) {
+					that.setData({
+						patients: rawData
+					});
+				}
+			}
+		});
+	},
 
-				that.setData({
-					patients: JSON.parse(response.data.doctors)
+	/**
+	 *  事件	- 点击选择
+	 */
+	onPatientSelected: function (e) {
+		wx.setStorage({
+			key: "patientSelected",
+			data: e.currentTarget.dataset.patient,
+			success: function (result) {
+				wx.navigateBack({
+					// 回退
 				});
 			}
+		});
+	},
+
+	/**
+		 *  事件	- 新增就诊人
+		 */
+	addPatient: function (e) {
+		wx.redirectTo({
+			url: '/pages/create/patient/patient'
 		})
-	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
 	}
 })

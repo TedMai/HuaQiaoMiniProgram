@@ -1,4 +1,5 @@
 /**app.wxss**/
+
 /* .container {
   height: 100%;
   display: flex;
@@ -8,3 +9,137 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 }  */
+
+/*
+ * 列表样式
+*/
+
+.list-with-graphic, .list-part-bottom, .list-part-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-with-graphic {
+    width: 100%;
+    padding: 1rem 0.5rem;
+    border-bottom: 0.1rem solid #ccc;
+}
+
+.list-part-top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.list-part-bottom {
+    width: 90%;
+}
+
+.list-part-left {
+    width: 30%;
+}
+
+.list-part-right {
+    width: 70%;
+    padding: 1rem 0.5rem;
+}
+
+.list-part-left  image {
+    width: 5rem;
+    height: 5rem;
+    margin: 20rpx;
+    border-radius: 50%;
+}
+
+.doctor-name {
+    font-size: 40pt;
+    padding: 0 0 1rem 0;
+}
+
+.doctor-title, .doctor-department {
+    font-size: 14pt;
+}
+
+.doctor-resume, .doctor-field {
+    font-size: 13pt;
+    padding: 0.5rem 0;
+}
+
+/*
+ * 分隔线
+*/
+
+.seperator {
+    width: 100%;
+    height: 1.5rem;
+    background-color: #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.seperator text {
+    color: #fff;
+    font-size: 14pt;
+    padding: 0 1rem;
+}
+
+.filed-label-color {
+    color: #888;
+}
+
+/*
+ *  功能列表项
+*/
+
+.funcitonal-list {
+    width: 95%;
+}
+
+.funcitonal-list-item, .funcitonal-list-item-right {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.funcitonal-list-item {
+    width: 100%;
+    padding: 15px;
+    border-top: 0.1rem solid #ccc;
+    justify-content: space-between;
+}
+
+.funcitonal-last-list-item {
+    border-bottom: 0.1rem solid #ccc;
+}
+
+.funcitonal-list-item text {
+    font-size: 17pt;
+    color: #000;
+}
+
+.funcitonal-list-item-right text {
+    color: #888;
+    padding-right: 15px;
+}
+
+.funcitonal-list-item image {
+    width: 20px;
+    height: 20px;
+    padding-right: 15px;
+}
+
+.funcitonal-list-item radio-group{
+	padding-right: 15px;
+}
+
+/*
+ * 按键
+*/
+
+.btn-fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

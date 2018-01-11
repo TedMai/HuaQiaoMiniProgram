@@ -1,19 +1,19 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/search/department/department",
-    "pages/list/doctor/doctor",
-	"pages/list/patient/patient",
-	"pages/details/doctor/doctor",
-	"pages/appointment/init/init",
-	"pages/appointment/confirm/confirm",
-	"pages/appointment/complete/complete"
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "wxchat",
-    "navigationBarTextStyle":"black"
-  }
+	"pages": [
+		"pages/index/index",
+		"pages/search/department/department",
+		"pages/list/doctor/doctor",
+		"pages/list/patient/patient",
+		"pages/details/doctor/doctor",
+		"pages/details/appointment/appointment",
+		"pages/appointment/init/init",
+		"pages/appointment/confirm/confirm",
+		"pages/create/patient/patient"
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "wxchat",
+		"navigationBarTextStyle": "black"
+	}
 }

@@ -10,7 +10,6 @@ Page({
 		departments: [],
 		superiorDepartments: [],
 		subordinateDepartments: []
-
 	},
 
     /**
@@ -26,96 +25,74 @@ Page({
 				'content-type': 'application/json'
 			},
 			success: function (response) {
-				console.info(response);
 				if (response.data instanceof Array) {
+					// 成功返回 - 初始化
 					that.data.departments = response.data;
 					response.data.map(item => {
+						// 父科室
 						if (item.parent === 0) {
 							that.data.superiorDepartments.push({
 								id: item.did,
-								name: item.name
+								name: item.name,
+								backgroundColor: ''
 							});
 						}
 					});
+					// 默认显示父科室数组内第一个元素下的所有子科室，如果有
+					if (that.data.superiorDepartments.length > 0) {
+						that.initOrdinateDepartments(that.data.superiorDepartments[0].id);
+					}
+					// setData
 					that.setData({
 						departments: that.data.departments,
 						superiorDepartments: that.data.superiorDepartments
 					});
 				}
 			}
-		})
-
-
+		});
 	},
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-	onReady: function () {
-
-	},
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-	onShow: function () {
-
-	},
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-	onHide: function () {
-
-	},
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-	onUnload: function () {
-
-	},
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-	onPullDownRefresh: function () {
-
-	},
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-	onReachBottom: function () {
-
-	},
-
-    /**
-     * 用户点击右上角分享
-     */
-	onShareAppMessage: function () {
-
-	},
-
-	toShowOrdinateDepartments: function (e) {
+	/**
+	 * 初始化子科室数组
+	 */
+	initOrdinateDepartments: function (targetId) {
+		// 初始化 - 清空数组
 		this.data.subordinateDepartments.splice(0, this.data.subordinateDepartments.length);
+		// 设置父科室项目背景色
+		this.data.superiorDepartments.map(item => {
+			if (item.id === targetId) {
+				item.backgroundColor = '#ccc';
+			} else {
+				item.backgroundColor = 'white';
+			}
+		});
+		// 初始化子科室数组
 		this.data.departments.map(item => {
-			if (item.parent === e.currentTarget.dataset.departmentid) {
+			if (item.parent === targetId) {
 				this.data.subordinateDepartments.push({
 					id: item.did,
 					name: item.name
 				});
 			}
 		});
-		console.info(this.data.subordinateDepartments);
+		// setData
 		this.setData({
+			superiorDepartments: this.data.superiorDepartments,
 			subordinateDepartments: this.data.subordinateDepartments
 		});
 	},
 
-	toShowDoctorList: function (e) {
-		console.info(e);
+	/**
+	 * 显示当前选中科室下的所有子科室
+	 */
+	toShowOrdinateDepartments: function (e) {
+		this.initOrdinateDepartments(e.currentTarget.dataset.departmentid);
+	},
 
+	/**
+	 * 跳转 - 当前科室下的所有医生列表
+	 */
+	toShowDoctorList: function (e) {
 		wx.redirectTo({
 			url: '/pages/list/doctor/doctor?department=' + JSON.stringify(e.currentTarget.dataset.department)
 		})

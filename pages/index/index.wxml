@@ -4,8 +4,8 @@
         <label>便民服务</label>
     </view>
     <view class='functional-area'>
-        <view class='functional-item'>
-            <image src='../../icons/index/appointment.png' bindtap='toMakeAppointment'></image>
+        <view class='functional-item' bindtap='toMakeAppointment'>
+            <image src='../../icons/index/appointment.png'></image>
             <text>预约挂号</text>
         </view>
         <view class='functional-item'>

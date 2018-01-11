@@ -1,12 +1,16 @@
 <!--pages/appointment/confirm/confirm.wxml-->
 <view>
-    <view>
+    <view class='funcitonal-list-item'>
         <text>手机号</text>
-        <input></input>
+        <input type='number' placeholder='{{ mobile }}' name="phone" disabled></input>
     </view>
-    <view>
+    <view class='funcitonal-list-item funcitonal-last-list-item'>
         <text>验证码</text>
-        <input></input>
-        <button>获取</button>
+        <view class='fetch-verification-code'>
+            <input type='number' placeholder='请输入验证码' name="verificationCode"></input>
+            <button type='primary' size='mini'>获取</button>
+        </view>
     </view>
 </view>
+
+<button type='primary' formType="submit" class='btn-fixed-bottom' bindtap='submitAppointment'>下一步</button>

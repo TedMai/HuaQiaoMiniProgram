@@ -12,7 +12,7 @@ page, .container {
 
 .superior,.subordinate{
     width: 50%;
-    padding: 1rem;
+    padding: 1rem 0;
 }
 
 .subordinate{
@@ -20,5 +20,9 @@ page, .container {
 }
 
 .superior-item,.subordinate-item{
-    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+}
+
+.superior-item text,.subordinate-item text{
+	margin: 0 1rem;
 }

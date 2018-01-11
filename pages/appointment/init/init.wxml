@@ -1,33 +1,58 @@
 <!-- pages/appointment/init/init.wxml-->
-<view>
-    <view>
-        <text>{{ doctorName }}</text>
-        <text>{{ departmentName }}</text>
-    </view>
-
-    <view>
-        <text>门诊时间：</text>
-        <text>{{ schedule.visiting }}</text>
-        <view>
-            <text> 门诊类型： </text>
-            <text>专家门诊</text>
-        </view>
-        <view>
-            <text>挂号费用</text>
-            <text>{{ schedule.registerFee }}</text>
-            <text>医疗服务费用</text>
-            <text>{{ schedule.medicalFee }}</text>
-        </view>
-    </view>
-
-    <view data-userid='osCkO0a1sPv2YDNBIAw7wFXlTib4' bindtap='toPatientList'>
-        <text>就诊人</text>
-    </view>
-    <view>
-        <text>初/复诊</text>
-    </view>
-    <view>
-        <text>支付方式</text>
-    </view>
-    <button bindtap='toConfirmAppointment'>确认预约</button>
+<!-- 预约基础信息  -->
+<view class='appointment-field'>
+    <text class='filed-label-color'>就诊医生：</text>
+    <text>{{ doctorName }}</text>
 </view>
+<view class='appointment-field'>
+    <text class='filed-label-color'>就诊科室：</text>
+    <text>{{ departmentName }}</text>
+</view>
+<view class='appointment-field'>
+    <text class='filed-label-color'>门诊时间：</text>
+    <view>
+        <text>{{ schedule.visiting }}</text>
+        <text wx:if="{{ schedule.section === 0 }}">上午</text>
+        <text wx:else>下午</text>
+    </view>
+</view>
+<view class='appointment-field'>
+    <text class='filed-label-color'>门诊类型：</text>
+    <text>专家门诊</text>
+</view>
+<view class='appointment-field'>
+    <text class='filed-label-color'>挂号费用：</text>
+    <text>{{ schedule.registerFee }}</text>
+</view>
+<view class='appointment-field'>
+    <text class='filed-label-color'>医疗服务费用：</text>
+    <text>{{ schedule.medicalFee }}</text>
+</view>
+<!-- 预约规则说明 -->
+<view class='appointment-rule'>
+    <text class='filed-label-color'>• 停诊将短信通知,请保持手机畅通</text>
+    <text class='filed-label-color'>• 实名制预约,就诊人信息不符将无法取号</text>
+</view>
+<!-- 预约所需的信息选项 -->
+<view class='funcitonal-list'>
+    <view data-userid='8' bindtap='toPatientList' class='funcitonal-list-item'>
+        <text>就诊人</text>
+        <view class='funcitonal-list-item-right'>
+            <text>{{ patient.name }}</text>
+            <image src='../../../icons/common/go-forward.png'></image>
+        </view>
+    </view>
+    <view class='funcitonal-list-item'>
+        <text>疾病信息</text>
+        <image src='../../../icons/common/go-forward.png'></image>
+    </view>
+    <view class='funcitonal-list-item'>
+        <text>预约时间段</text>
+        <image src='../../../icons/common/go-forward.png'></image>
+    </view>
+    <view class='funcitonal-list-item funcitonal-last-list-item'>
+        <text>支付方式</text>
+        <image src='../../../icons/common/go-forward.png'></image>
+    </view>
+</view>
+<button type='primary' bindtap='toConfirmAppointment' class='btn-fixed-bottom'>确认预约</button>

@@ -1,5 +1,6 @@
 // pages/details/doctor/doctor.js
 const __API__ = require("../../../services/backbone.api.js");
+const __DATETIME_FORMAT__ = require("../../../services/datetime.service.js");
 
 Page({
 
@@ -19,16 +20,16 @@ Page({
 		var
 			that = this,
 			doctor = JSON.parse(options.doctor);
-
+		// 初始化
 		this.setData({
 			departmentName: options.departmentName,
 			doctor: doctor
 		})
-
+		// 设置导航栏标题
 		wx.setNavigationBarTitle({
 			title: doctor.name
 		})
-
+		// 请求该医生排班
 		wx.request({
 			url: __API__.queryRelatives('schedule', doctor.id),
 			data: {},
@@ -37,61 +38,18 @@ Page({
 			},
 			success: function (response) {
 				console.info(response);
+				if (response.statusCode === 200) {
+					that.data.schedules = response.data.map(item => {
+						item.visiting = __DATETIME_FORMAT__.formatDate(new Date(item.visiting));
+						return item;
+					});
 
-				that.setData({
-					schedules: response.data
-				})
+					that.setData({
+						schedules: that.data.schedules
+					});
+				}
 			}
-		})
-	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
+		});
 	},
 
 	toMakeAppointment: function (e) {
