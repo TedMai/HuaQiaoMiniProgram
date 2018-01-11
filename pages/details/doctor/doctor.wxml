@@ -3,7 +3,7 @@
 <view class='list-with-graphic'>
     <view class='list-part-top'>
         <view class='list-part-left'>
-            <image src='{{ doctor.imageurl }}'></image>
+             <image src='{{ doctor.imageurl }}'></image> 
         </view>
         <view class='list-part-right'>
             <text class='doctor-name'>{{ doctor.name }}</text>

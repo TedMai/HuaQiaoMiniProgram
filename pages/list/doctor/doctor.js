@@ -96,8 +96,6 @@ Page({
 	},
 
 	toShowDoctorDetails: function (e) {
-		console.info(e);
-
 		wx.navigateTo({
 			url: '/pages/details/doctor/doctor?doctor=' + JSON.stringify(e.currentTarget.dataset.doctor)
 			+ '&departmentName=' + this.data.department.name
