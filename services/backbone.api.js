@@ -21,10 +21,23 @@ const insert = function (name) {
 	return domain + api + '/table/' + name;
 }
 
+/**
+ * 发送Sms
+ * 	传入参数
+ * 		--		phone: 接收的手机号码
+ * 		--		type: 短信类型 
+ * 					0 - 验证码
+ * 					1 - 确认短信
+ */
+const sendSms = function (phone, type) {
+	return domain + api + '/sms/' + phone + '/type/' + type;
+}
+
 module.exports = {
 	getTableList: getTableList,
 	getTableDetails: getTableDetails,
 	getImageRequestPrefix: getImageRequestPrefix,
 	queryRelatives: queryRelatives,
-	insert: insert
+	insert: insert,
+	sendSms: sendSms
 }

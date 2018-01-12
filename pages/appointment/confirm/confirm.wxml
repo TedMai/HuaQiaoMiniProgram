@@ -1,21 +1,22 @@
 <!--pages/appointment/confirm/confirm.wxml-->
 <form bindsubmit='submitAppointment'>
-<view>
-    <view class='funcitonal-list-item' wx:if="{{ message != '' }}">
-        <text style='color: #f36'>{{ message }}</text>
-    </view>
-    <view class='funcitonal-list-item'>
-        <text>手机号</text>
-        <input type='number' placeholder='{{ mobile }}' disabled></input>
-    </view>
-    <view class='funcitonal-list-item funcitonal-last-list-item'>
-        <text>验证码</text>
-        <view class='fetch-verification-code'>
-            <input type='number' placeholder='请输入验证码' name="verificationCode" bindfocus='verificationCodeInputFocus'></input>
-            <button type='primary' size='mini'>获取</button>
+    <view>
+        <view class='funcitonal-list-item' wx:if="{{ message != '' }}">
+            <text style='color: #f36'>{{ message }}</text>
+        </view>
+        <view class='funcitonal-list-item'>
+            <text>手机号</text>
+            <input type='number' placeholder='{{ mobile }}' disabled></input>
+        </view>
+        <view class='funcitonal-list-item funcitonal-last-list-item'>
+            <text>验证码</text>
+            <view class='fetch-verification-code'>
+                <input type='number' placeholder='请输入验证码' name="verificationCode" bindfocus='verificationCodeInputFocus'></input>
+                <component-btn-verification btn-text="获取" mobile="{{ mobile }}" bind:sendVerificationCode="onVerificationCodeSent">
+                </component-btn-verification>
+            </view>
         </view>
     </view>
-</view>
 
-<button type='primary' formType="submit" class='btn-fixed-bottom'>下一步</button>
+    <button type='primary' formType="submit" class='btn-fixed-bottom'>下一步</button>
 </form>

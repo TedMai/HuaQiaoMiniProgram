@@ -1,0 +1,3 @@
+<!--component/btn.verification.component/btn.verification.component.wxml-->
+<button id="btnVerificationCode" type="primary" size="mini" bindtap='triggerSms'> {{ btnText }}
+</button>
