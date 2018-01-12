@@ -85,6 +85,47 @@
     padding: 0 1rem;
 }
 
+/*
+ *  描述列表项
+ */
+
+.description-area {
+    border-bottom: 0.1rem solid #ccc;
+    background-color: #fff;
+}
+
+.description-field {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.description-field-left {
+    width: 30%;
+    padding-left: 15px;
+}
+
+.description-field-right {
+    width: 70%;
+    padding-right: 15px;
+}
+
+.description-extra-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	padding: 8px 0 20px 0;
+}
+
+.description-extra-info text {
+    font-size: 9pt;
+    color: #888;
+}
+
 .filed-label-color {
     color: #888;
 }
@@ -130,8 +171,8 @@
     padding-right: 15px;
 }
 
-.funcitonal-list-item radio-group{
-	padding-right: 15px;
+.funcitonal-list-item radio-group {
+    padding-right: 15px;
 }
 
 /*

@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -32,7 +32,14 @@
 				{
 					"id": -1,
 					"name": "确认预约",
-					"pathName": "pages/appointment/confirm/confirm"
+					"pathName": "pages/appointment/confirm/confirm",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "订单详情",
+					"pathName": "pages/details/appointment/appointment",
+					"query": "departmentName=心电图科&doctorName=小明&appintment=2018-01-12T08:50:28.667Z&rid=fZ2UGJoLXce7VdiqGTbBaSmRETLz4I1a"
 				}
 			]
 		}

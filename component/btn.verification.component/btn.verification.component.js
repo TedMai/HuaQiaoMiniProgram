@@ -1,6 +1,7 @@
 // component/btn.verification.component/btn.verification.component.js
 const __API__ = require("../../services/backbone.api.js");
 const __VALIDATOR__ = require("../../services/validator.service.js");
+const __INTERVAL_SECONDS__ = 60;
 
 Component({
 	properties: {
@@ -16,7 +17,7 @@ Component({
 	data: {
 		hasSent: false,
 		timerId: 0,
-		countDownSeconds: 10
+		countDownSeconds: __INTERVAL_SECONDS__
 	},
 	/**
 		 * 组件生命周期函数
@@ -24,14 +25,12 @@ Component({
 		 * 注意此时不能调用 setData
 		 */
 	created: function () {
-		console.log("======>	created");
 	},
 	/**
 	 * 组件生命周期函数
 	 * 在组件实例进入页面节点树时执行
 	 */
 	attached: function () {
-		console.log("======>	attached");
 	},
 	/**
 	 * 组件生命周期函数
@@ -51,7 +50,6 @@ Component({
 	 * 在组件实例被从页面节点树移除时执行
 	 */
 	detached: function () {
-		console.log("======>	detached");
 		this._clearTimer();
 	},
 	/**
@@ -66,8 +64,6 @@ Component({
 		triggerSms: function () {
 			var that = this;
 
-			console.log("======>triggerSms | ");
-
 			if (__VALIDATOR__.MobilePhoneValidator(this.properties.mobile)) {
 				this.data.hasSent = true;
 
@@ -80,14 +76,16 @@ Component({
 						'content-type': 'application/json'
 					},
 					success: function (response) {
-						console.log(response);
 						if (response.data.Code === 'OK') {
 							that._countDown();
 						}
 						that.triggerEvent('sendVerificationCode', response.data);
 					},
 					fail: function (error) {
-						console.error(error);
+						that.triggerEvent('sendVerificationCode', {
+							Code: 'Failed',
+							Message: '网络出现错误'
+						});
 					}
 				});
 			} else {
@@ -109,7 +107,7 @@ Component({
 				that.data.countDownSeconds--;
 				if (that.data.countDownSeconds <= 0) {
 					that._clearTimer();
-					that.data.countDownSeconds = 10;
+					that.data.countDownSeconds = __INTERVAL_SECONDS__;
 					that.data.hasSent = false;
 					that.properties.btnText = '重发';
 				} else {
@@ -127,7 +125,6 @@ Component({
 		 * 内部方法建议以下划线开头
 		 */
 		_clearTimer: function () {
-			console.log("======>_clearTimer | " + this.data.timerId);
 			clearInterval(this.data.timerId);
 		}
 	}

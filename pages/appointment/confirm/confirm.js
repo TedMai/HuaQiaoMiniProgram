@@ -8,9 +8,11 @@ Page({
 	 */
 	data: {
 		message: '',
+		departmentName: '',
+		doctorName: '',
 		mobile: '',
 		pid: 0,
-		schedule: 0,
+		schedule: {},
 		requestId: '',
 		bizId: ''
 	},
@@ -22,9 +24,11 @@ Page({
 		console.log(options);
 
 		this.setData({
+			departmentName: options.departmentName,
+			doctorName: options.doctorName,
 			mobile: options.phone,
 			pid: options.pid,
-			schedule: options.schedule
+			schedule: JSON.parse(options.schedule)
 		});
 	},
 
@@ -39,12 +43,12 @@ Page({
 			url: __API__.insert('appointment'),
 			method: 'POST',
 			data: {
-				schedule: that.data.schedule,
+				schedule: that.data.schedule.id,
 				patient: that.data.pid,
 				requestId: that.data.requestId,
 				bizId: that.data.bizId,
 				phone: that.data.mobile,
-				verificationCode: e.detail.verificationCode
+				verificationCode: e.detail.value.verificationCode
 			},
 			dataType: 'json',
 			header: {
@@ -53,12 +57,26 @@ Page({
 			success: function (response) {
 				console.log(response);
 				if (response.data.code === 0) {
+					// 装入额外信息 下单时间及挂号单ID
+					// 跳转至订单详情页
 					wx.reLaunch({
-						url: '/pages/details/appointment/appointment',
+						url: '/pages/details/appointment/appointment?appintment=' + response.data.msg.appointment
+						+ '&rid=' + response.data.msg.insertId
+						+ '&doctorName=' + that.data.doctorName
+						+ '&departmentName=' + that.data.departmentName
+						+ '&schedule=' + JSON.stringify(that.data.schedule)
 					});
 				} else if (response.data.code === -300) {
 					that.setData({
 						message: response.data.msg
+					});
+				} else if (response.data.code === -500) {
+					that.setData({
+						message: "您已预约成功，请进入个人中心查看详情。"
+					});
+				} else {
+					that.setData({
+						message: "出现未知错误。"
 					});
 				}
 			},

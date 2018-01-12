@@ -1,24 +1,26 @@
 <!--pages/list/patient/patient.wxml-->
-<radio-group>
-    <view wx:for='{{ patients }}' wx:key='{{ item.pid }}' class='patient-list'>
-        <radio value='{{ item.pid }}' />
-        <view data-patient='{{ item }}' bindtap='onPatientSelected'>
-            <view class='patient-list-field'>
-                <text>{{ item.name }}</text>
-                <text wx:if='{{ item.sex === 0 }}'>男</text>
-                <text wx:else>女</text>
-            </view>
-            <view class='patient-list-field'>
-                <text class='filed-label-color'>身份证：</text>
-                <text>{{ item.identity }}</text>
-            </view>
-            <view class='patient-list-field'>
-                <text class='filed-label-color'>手机号码：</text>
-                <text>{{ item.phone }}</text>
+<view class='container'>
+    <radio-group>
+        <view wx:for='{{ patients }}' wx:key='{{ item.pid }}' class='patient-list'>
+            <radio value='{{ item.pid }}' />
+            <view data-patient='{{ item }}' bindtap='onPatientSelected'>
+                <view class='patient-list-field'>
+                    <text>{{ item.name }}</text>
+                    <text wx:if='{{ item.sex === 0 }}'>男</text>
+                    <text wx:else>女</text>
+                </view>
+                <view class='patient-list-field'>
+                    <text class='filed-label-color'>身份证：</text>
+                    <text>{{ item.identity }}</text>
+                </view>
+                <view class='patient-list-field'>
+                    <text class='filed-label-color'>手机号码：</text>
+                    <text>{{ item.phone }}</text>
+                </view>
             </view>
         </view>
-    </view>
-</radio-group>
+    </radio-group>
+</view>
 
 <view class='patient-bottom btn-fixed-bottom'>
     <button type='warn'>删除</button>

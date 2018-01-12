@@ -1,5 +1,9 @@
 /* pages/list/patient/patient.wxss */
 
+.container {
+    padding-bottom: 10rem;
+}
+
 .patient-list, .patient-list-field, .patient-bottom {
     display: flex;
     flex-direction: row;

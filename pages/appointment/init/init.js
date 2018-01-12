@@ -4,60 +4,62 @@ Page({
 	/**
 	 * 页面的初始数据
 	 */
-    data: {
-        departmentName: '',
-        doctorName: '',
-        schedule: {},
-        patient: {}
-    },
+	data: {
+		departmentName: '',
+		doctorName: '',
+		schedule: {},
+		patient: {}
+	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-    onLoad: function (options) {
-        console.info(options);
+	onLoad: function (options) {
+		console.info(options);
 
-        this.setData({
-            departmentName: options.departmentName,
-            doctorName: options.doctorName,
-            schedule: JSON.parse(options.schedule)
-        });
+		this.setData({
+			departmentName: options.departmentName,
+			doctorName: options.doctorName,
+			schedule: JSON.parse(options.schedule)
+		});
 
-        wx.removeStorage({
-            key: 'patientSelected',
-            success: function (res) { }
-        })
-    },
+		wx.removeStorage({
+			key: 'patientSelected',
+			success: function (res) { }
+		})
+	},
 
 	/**
 	   * 生命周期函数--监听页面显示
 	   */
-    onShow: function () {
-        var that = this;
+	onShow: function () {
+		var that = this;
 
-        wx.getStorage({
-            key: 'patientSelected',
-            success: function (res) {
-                that.setData({
-                    patient: res.data
-                });
-            }
-        })
-    },
+		wx.getStorage({
+			key: 'patientSelected',
+			success: function (res) {
+				that.setData({
+					patient: res.data
+				});
+			}
+		})
+	},
 
-    toPatientList: function (e) {
-        wx.navigateTo({
-            url: '/pages/list/patient/patient?userid=' + e.currentTarget.dataset.userid
-        })
-    },
+	toPatientList: function (e) {
+		wx.navigateTo({
+			url: '/pages/list/patient/patient?userid=' + e.currentTarget.dataset.userid
+		})
+	},
 
-    toConfirmAppointment: function (e) {
-        const that = this;
+	toConfirmAppointment: function (e) {
+		const that = this;
 
-        wx.navigateTo({
-            url: '/pages/appointment/confirm/confirm?pid=' + that.data.patient.pid
-            + '&phone=' + that.data.patient.phone
-            + '&schedule=' + that.data.schedule.id
-        })
-    }
+		wx.navigateTo({
+			url: '/pages/appointment/confirm/confirm?pid=' + that.data.patient.pid
+			+ '&phone=' + that.data.patient.phone
+			+ '&doctorName=' + that.data.doctorName
+			+ '&departmentName=' + that.data.departmentName
+			+ '&schedule=' + JSON.stringify(that.data.schedule)
+		})
+	}
 })
