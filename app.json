@@ -1,19 +1,41 @@
 {
-	"pages": [
-		"pages/index/index",
-		"pages/search/department/department",
-		"pages/list/doctor/doctor",
-		"pages/list/patient/patient",
-		"pages/details/doctor/doctor",
-		"pages/details/appointment/appointment",
-		"pages/appointment/init/init",
-		"pages/appointment/confirm/confirm",
-		"pages/create/patient/patient"
-	],
-	"window": {
-		"backgroundTextStyle": "light",
-		"navigationBarBackgroundColor": "#fff",
-		"navigationBarTitleText": "wxchat",
-		"navigationBarTextStyle": "black"
-	}
+    "pages": [
+        "pages/index/index",
+        "pages/search/department/department",
+        "pages/list/doctor/doctor",
+        "pages/list/patient/patient",
+        "pages/list/appointment/appointment",
+        "pages/details/doctor/doctor",
+        "pages/details/appointment/appointment",
+        "pages/appointment/init/init",
+        "pages/appointment/confirm/confirm",
+        "pages/create/patient/patient",
+        "pages/me/profile/profile"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "wxchat",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#CCCCCC",
+        "selectedColor": "#000000",
+        "backgroundColor": "#FFFFFF",
+        "borderStyle": "#CCCCCC",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "icons/bar/index.png",
+                "selectedIconPath": "icons/bar/index.png"
+            },
+            {
+                "pagePath": "pages/me/profile/profile",
+                "text": "我的",
+                "iconPath": "icons/bar/me.png",
+                "selectedIconPath": "icons/bar/me.png"
+            }
+        ]
+    }
 }

@@ -1,5 +1,5 @@
 <!--pages/create/patient/patient.wxml-->
-<form bindsubmit="saveNewPatient">
+<form bindsubmit="onSubmitNewPatient">
     <view class='funcitonal-list'>
         <view class='funcitonal-list-item'>
             <text>姓名</text>

@@ -1,0 +1,56 @@
+/* pages/me/profile/profile.wxss */
+
+.container, .userinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    height: 5.5rem;
+    border-bottom: 0.1rem solid #ccc;
+}
+
+.userinfo {
+    width: 100%;
+    align-items: center;
+}
+
+.userinfo image {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.userinfo text {
+    font: 17pt;
+    margin: 8px 0 20px 0;
+}
+
+.entry-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.entry-item {
+    width: 25%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.entry-item image {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.entry-item text {
+    font-size: 9pt;
+    margin-top: 8px;
+}

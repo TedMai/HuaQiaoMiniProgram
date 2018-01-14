@@ -1,0 +1,33 @@
+<!--pages/me/profile/profile.wxml-->
+<view class="container">
+    <button type='default' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+        <view class="userinfo">
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </view>
+    </block>
+</view>
+<!-- <view class='seperator'></view> -->
+<view class='entry-list'>
+    <view class='entry-item'>
+        <image src='../../../icons/me/appointment.png'></image>
+        <text>预约记录</text>
+    </view>
+    <view class='entry-item'>
+        <image src='../../../icons/me/combine.png'></image>
+        <text>关联手机</text>
+    </view>
+    <view class='entry-item' bindtap='toPatientList'>
+        <image src='../../../icons/me/patient.png'></image>
+        <text>就诊人信息</text>
+    </view>
+    <view class='entry-item'>
+        <image src='../../../icons/me/collection.png'></image>
+        <text>收藏</text>
+    </view>
+    <view class='entry-item'>
+        <image src='../../../icons/me/more.png'></image>
+        <text>更多</text>
+    </view>
+</view>

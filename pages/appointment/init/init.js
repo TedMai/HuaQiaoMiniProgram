@@ -46,9 +46,14 @@ Page({
 	},
 
 	toPatientList: function (e) {
-		wx.navigateTo({
-			url: '/pages/list/patient/patient?userid=' + e.currentTarget.dataset.userid
-		})
+        wx.getStorage({
+            key: 'user',
+            success: function(res) {
+                wx.navigateTo({
+                    url: '/pages/list/patient/patient?userid=' + res.data
+                })
+            }
+        });
 	},
 
 	toConfirmAppointment: function (e) {

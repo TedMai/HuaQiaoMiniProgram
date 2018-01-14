@@ -53,12 +53,22 @@ Page({
     },
 
     toMakeAppointment: function (e) {
-        console.info(e);
+        var that = this;
 
-        wx.navigateTo({
-            url: '/pages/appointment/init/init?doctorName=' + this.data.doctor.name
-            + '&departmentName=' + this.data.departmentName
-            + '&schedule=' + JSON.stringify(e.currentTarget.dataset.schedule)
-        })
+        wx.getStorage({
+            key: 'user',
+            success: function (res) {
+                wx.navigateTo({
+                    url: '/pages/appointment/init/init?doctorName=' + that.data.doctor.name
+                    + '&departmentName=' + that.data.departmentName
+                    + '&schedule=' + JSON.stringify(e.currentTarget.dataset.schedule)
+                })
+            },
+            fail: function (err) {
+                console.error(err);
+            }
+        });
+
+
     }
 })
