@@ -57,6 +57,17 @@ Page({
         })
     },
 
+	toCombineMobile: function(e){
+		wx.getStorage({
+			key: 'user',
+			success: function (res) {
+				wx.navigateTo({
+					url: '/pages/me/mobile/mobile?userid=' + res.data
+				})
+			}
+		});
+	},
+
     toPatientList: function (e) {
         wx.getStorage({
             key: 'user',

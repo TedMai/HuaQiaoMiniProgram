@@ -1,0 +1,3 @@
+<!--pages/me/mobile/mobile.wxml-->
+
+<component-sample-verification btn-sms-text='发送' btn-submit-text='绑定' user-id='{{ user }}'></component-sample-verification>

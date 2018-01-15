@@ -31,4 +31,10 @@
         <label>医院位置</label>
     </view>
     <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{ scale }}" markers="{{markers}}" show-location style="width: 100%; height: 300px;"></map>
+    <view class='field-label'>
+        <label>联系方式</label>
+    </view>
+    <view>
+        <text selectable="true" space="nbsp">{{ contact }}</text>
+    </view>
 </view>

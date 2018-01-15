@@ -20,26 +20,30 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"game": {
 			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
-					"name": "新增就诊人",
-					"pathName": "pages/create/patient/patient",
-					"query": ""
-				},
-				{
-					"id": -1,
+					"id": 0,
 					"name": "确认预约",
-					"pathName": "pages/appointment/confirm/confirm",
+					"pathName": "pages/me/mobile/mobile",
 					"query": ""
 				},
 				{
 					"id": 2,
 					"name": "订单详情",
 					"pathName": "pages/details/appointment/appointment",
-					"query": "departmentName=心电图科&doctorName=小明&appintment=2018-01-12T08:50:28.667Z&rid=fZ2UGJoLXce7VdiqGTbBaSmRETLz4I1a"
+					"query": "rid=0R5sYoXFFpxqI6VssmwNKkoJw1yefc87"
+				},
+				{
+					"id": 3,
+					"name": "我的预约",
+					"pathName": "pages/list/appointment/appointment",
+					"query": "userid=24"
 				}
 			]
 		}

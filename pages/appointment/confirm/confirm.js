@@ -8,8 +8,6 @@ Page({
 	 */
 	data: {
 		message: '',
-		departmentName: '',
-		doctorName: '',
 		mobile: '',
 		pid: 0,
 		schedule: {},
@@ -24,8 +22,6 @@ Page({
 		console.log(options);
 
 		this.setData({
-			departmentName: options.departmentName,
-			doctorName: options.doctorName,
 			mobile: options.phone,
 			pid: options.pid,
 			schedule: JSON.parse(options.schedule)
@@ -34,10 +30,6 @@ Page({
 
 	submitAppointment: function (e) {
 		const that = this;
-
-		console.log("====>	submitAppointment");
-		console.log(e);
-		console.log(that.data);
 
 		wx.request({
 			url: __API__.insert('appointment'),
@@ -60,11 +52,7 @@ Page({
 					// 装入额外信息 下单时间及挂号单ID
 					// 跳转至订单详情页
 					wx.reLaunch({
-						url: '/pages/details/appointment/appointment?appintment=' + response.data.msg.appointment
-						+ '&rid=' + response.data.msg.insertId
-						+ '&doctorName=' + that.data.doctorName
-						+ '&departmentName=' + that.data.departmentName
-						+ '&schedule=' + JSON.stringify(that.data.schedule)
+						url: '/pages/details/appointment/appointment?rid=' + response.data.msg.insertId
 					});
 				} else if (response.data.code === -300) {
 					that.setData({

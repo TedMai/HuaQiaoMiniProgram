@@ -1,0 +1,21 @@
+<!--component/sample.verification.component/sample.verification.component.wxml-->
+<form bindsubmit='combineMobile'>
+    <view>
+        <view style='display: flex; flex-flow: row; align-items: center; justify-content: space-between; padding: 8px 15px 20px 15px' wx:if="{{ message != '' }}">
+            <text style='color: #f36'>{{ message }}</text>
+        </view>
+        <view style='display: flex; flex-flow: row; align-items: center; justify-content: space-between; padding: 8px 15px 20px 15px'>
+            <text style='width: 30%;'>手机号：</text>
+            <input type='number' name='mobilePhone' placeholder='请输入手机号码' value='{{ mobile }}' style='width: 70%;' bindinput='mobileInputEvent' bindfocus='inputFocusEvent'></input>
+        </view>
+        <view style='display: flex; flex-flow: row; align-items: center; justify-content: space-between; padding: 8px 15px 20px 15px'>
+            <text style='width: 30%;'>验证码</text>
+            <view style='display: flex; flex-flow: row; align-items: center; justify-content: space-between; width: 70%;'>
+                <input type='number' placeholder='请输入验证码' name="verificationCode" bindfocus='inputFocusEvent' style='width: 70%;'></input>
+                <button type="primary" size="mini" bindtap='triggerSms' style='width: 30%;'> {{ btnSmsText }}
+                </button>
+            </view>
+        </view>
+    </view>
+    <button type='primary' formType="submit" style='margin: 8px 15px 20px 15px'>{{ btnSubmitText }}</button>
+</form>

@@ -8,6 +8,7 @@ Page({
 	data: {
 		name: '',
 		description: '',
+		contact: '',
 		longitude: 0,
 		latitude: 0,
 		scale: 14,
@@ -42,6 +43,7 @@ Page({
 						title: hospital.name
 					});
 					that.data.description = hospital.description;			// 医院简介
+					that.data.contact = hospital.contact;						// 联系方式
 					that.data.longitude = hospital.axisX;						// 经度
 					that.data.latitude = hospital.axisY;						   // 纬度
 					that.data.markers.push({										   // 标记点
@@ -65,6 +67,7 @@ Page({
 				}
 
 				that.setData({
+					contact: that.data.contact,
 					description: that.data.description,
 					longitude: that.data.longitude,
 					latitude: that.data.latitude,

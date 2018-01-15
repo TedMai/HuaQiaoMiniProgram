@@ -1,5 +1,6 @@
 // pages/details/appointment/appointment.js
-const __DATETIME_FORMAT__ = require("../../../services/datetime.service.js");
+const __API__ = require("../../../services/backbone.api.js");
+const __APPOINTMENT_FORMAT__ = require("../../../services/appointment.service.js");
 
 Page({
 
@@ -7,12 +8,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		departmentName: '',
-		doctorName: '',
-		appointmentId: '',
-		appointmentDatetime: '',
-		patient: {},
-		schedule: {}
+		appointment: {}
 	},
 
 	/**
@@ -21,24 +17,23 @@ Page({
 	onLoad: function (options) {
 		var that = this;
 
-		console.log(options);
-
-		this.setData({
-			departmentName: options.departmentName,
-			doctorName: options.doctorName,
-			appointmentId: options.rid,
-			appointmentDatetime: __DATETIME_FORMAT__.formatTime(new Date(options.appintment)),
-			schedule: JSON.parse(options.schedule)
-		});
-
-		wx.getStorage({
-			key: 'patientSelected',
-			success: function (res) {
-				that.setData({
-					patient: res.data
-				});
-			}
-		});
+		wx.request({
+			url: __API__.getTableDetails('appointment', options.rid),
+			data: {},
+			dataType: "json",
+			header: {
+				'content-type': 'application/json'
+			},
+			success: function (response) {
+				const rawData = __APPOINTMENT_FORMAT__.formatAppointmentDetails(JSON.parse(response.data.appointment));
+				if (rawData instanceof Array && rawData.length > 0) {
+					that.setData({
+						appointment: rawData[0]
+					})
+				}
+			},
+			fail: function (error) { console.error(error) }
+		})
 	},
 
 	backToIndex: function () {

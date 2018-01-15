@@ -1,2 +1,31 @@
 <!--pages/list/appointment/appointment.wxml-->
-<text>pages/list/appointment/appointment.wxml</text>
+<view wx:for='{{ appointments }}' wx:key='{{ item.rid }}' class='appointment-list'>
+    <view data-appointment='{{ item.rid }}' bindtap='toAppointmentDetails'>
+        <view class='seperator'>
+            <text> 预约时间：</text>
+            <text> {{ item.appointment }}</text>
+        </view>
+        <view class='appointment-list-item'>
+            <view class='left'>
+                <view class='field'>
+                    <text> 科室：</text>
+                    <text> {{ item.departmentName }}</text>
+                </view>
+                <view class='field'>
+                    <text> 医生：</text>
+                    <text> {{ item.doctorName }}</text>
+                </view>
+                <view class='visiting'>
+                    <text class='visiting-label'> 就诊时间：</text>
+                    <view class='field'>
+                        <text>{{ item.visiting }}</text>
+                        <text>{{ item.section }}</text>
+                    </view>
+                </view>
+            </view>
+            <view class='right'>
+                <text>{{ item.status }}</text>
+            </view>
+        </view>
+    </view>
+</view>

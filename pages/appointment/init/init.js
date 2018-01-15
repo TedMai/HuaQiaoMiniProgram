@@ -8,7 +8,8 @@ Page({
 		departmentName: '',
 		doctorName: '',
 		schedule: {},
-		patient: {}
+		patient: {},
+		noticeIconPath: '../../../icons/common/notice.png'
 	},
 
 	/**
@@ -46,25 +47,35 @@ Page({
 	},
 
 	toPatientList: function (e) {
-        wx.getStorage({
-            key: 'user',
-            success: function(res) {
-                wx.navigateTo({
-                    url: '/pages/list/patient/patient?userid=' + res.data
-                })
-            }
-        });
+		wx.getStorage({
+			key: 'user',
+			success: function (res) {
+				wx.navigateTo({
+					url: '/pages/list/patient/patient?userid=' + res.data
+				})
+			}
+		});
 	},
 
 	toConfirmAppointment: function (e) {
 		const that = this;
 
-		wx.navigateTo({
-			url: '/pages/appointment/confirm/confirm?pid=' + that.data.patient.pid
-			+ '&phone=' + that.data.patient.phone
-			+ '&doctorName=' + that.data.doctorName
-			+ '&departmentName=' + that.data.departmentName
-			+ '&schedule=' + JSON.stringify(that.data.schedule)
-		})
+		wx.getStorage({
+			key: 'patientSelected',
+			success: function (res) {
+				wx.navigateTo({
+					url: '/pages/appointment/confirm/confirm?pid=' + that.data.patient.pid
+					+ '&phone=' + that.data.patient.phone
+					+ '&schedule=' + JSON.stringify(that.data.schedule)
+				});
+			},
+			fail: function (err) {
+				wx.showToast({
+					title: '请选择就诊人',
+					image: that.data.noticeIconPath,
+					duration: 3000
+				})
+			}
+		});
 	}
 })

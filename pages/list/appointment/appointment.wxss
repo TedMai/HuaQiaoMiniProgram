@@ -1,1 +1,35 @@
 /* pages/list/appointment/appointment.wxss */
+
+.appointment-list {
+    padding-bottom: 20px;
+}
+
+.appointment-list-item, .field {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left, .right, .visiting {
+    display: flex;
+    flex-direction: column;
+}
+
+.left {
+    width: 70%;
+}
+
+.right {
+    width: 30%;
+	justify-content: center;
+    align-items: center;
+}
+
+.field,.visiting-label {
+    padding: 8px 15px 0 15px;
+}
+
+.right text{
+	font-size: 11pt;
+}

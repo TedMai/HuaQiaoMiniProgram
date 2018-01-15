@@ -10,7 +10,8 @@
         "pages/appointment/init/init",
         "pages/appointment/confirm/confirm",
         "pages/create/patient/patient",
-        "pages/me/profile/profile"
+        "pages/me/profile/profile",
+		"pages/me/mobile/mobile"
     ],
     "window": {
         "backgroundTextStyle": "light",

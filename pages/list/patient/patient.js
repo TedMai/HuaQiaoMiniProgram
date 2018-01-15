@@ -16,9 +16,6 @@ Page({
     onLoad: function (options) {
         var that = this;
 
-        console.log("======= patient.js ========");
-        console.log(options);
-
         wx.request({
             url: __API__.queryRelatives('patient', options.userid),
             data: {},
@@ -26,7 +23,6 @@ Page({
                 'content-type': 'application/json'
             },
             success: function (response) {
-                console.log(response);
                 // 	初始化
                 const rawData = JSON.parse(response.data.patients);
                 if (rawData instanceof Array && rawData.length > 0) {

@@ -10,24 +10,24 @@
 </view>
 <!-- <view class='seperator'></view> -->
 <view class='entry-list'>
-    <view class='entry-item'>
+    <view class='entry-item' bindtap='toAppointmentHistory'>
         <image src='../../../icons/me/appointment.png'></image>
         <text>预约记录</text>
     </view>
-    <view class='entry-item'>
+    <view class='entry-item' bindtap='toCombineMobile'>
         <image src='../../../icons/me/combine.png'></image>
         <text>关联手机</text>
     </view>
     <view class='entry-item' bindtap='toPatientList'>
         <image src='../../../icons/me/patient.png'></image>
-        <text>就诊人信息</text>
+        <text>就诊人信息</text>
     </view>
     <view class='entry-item'>
         <image src='../../../icons/me/collection.png'></image>
-        <text>收藏</text>
+        <text>收藏</text>
     </view>
     <view class='entry-item'>
         <image src='../../../icons/me/more.png'></image>
-        <text>更多</text>
+        <text>更多</text>
     </view>
 </view>

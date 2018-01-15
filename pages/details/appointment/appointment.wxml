@@ -1,19 +1,16 @@
 <!--pages/details/appointment/appointment.wxml-->
-<!-- <div class="d-flex flex-column justify-content-center align-content-center appointment-status extra-info">
-        <p>订单状态：</p>
-    </div> -->
 <view class='container'>
     <view class='description-extra-info'>
-        <text>订单状态：</text>
+        <text>订单状态：{{ appointment.status }}</text>
     </view>
     <view class='description-area'>
         <view class='description-field'>
             <text class='description-field-left filed-label-color'>科室</text>
-            <text class='description-field-right'>{{ departmentName }}</text>
+            <text class='description-field-right'>{{ appointment.departmentName }}</text>
         </view>
         <view class='description-field'>
             <text class='description-field-left filed-label-color'>医生</text>
-            <text class='description-field-right'>{{ doctorName }}</text>
+            <text class='description-field-right'>{{ appointment.doctorName }}</text>
         </view>
     </view>
     <view class='description-area'>
@@ -23,7 +20,7 @@
         </view>
         <view class='description-field'>
             <text class='description-field-left filed-label-color'>费用</text>
-            <text class='description-field-right'>{{ schedule.medicalFee }}</text>
+            <text class='description-field-right'>{{ appointment.medicalFee }}</text>
         </view>
         <view class='description-field'>
             <text class='description-field-left filed-label-color'>支付方式</text>
@@ -31,7 +28,7 @@
         </view>
         <view class='description-field'>
             <text class='description-field-left filed-label-color'>就诊日期</text>
-            <text class='description-field-right'>{{ schedule.visiting }}</text>
+            <text class='description-field-right'>{{ appointment.visiting }}</text>
         </view>
         <view class='description-field'>
             <text class='description-field-left filed-label-color'>领号时间</text>
@@ -52,15 +49,15 @@
     <view class='description-area'>
         <view class='description-field'>
             <text class='description-field-left filed-label-color'>患者姓名</text>
-            <text class='description-field-right'>{{ patient.name }}</text>
+            <text class='description-field-right'>{{ appointment.name }}</text>
         </view>
         <view class='description-field'>
             <text class='description-field-left filed-label-color'>身份证号</text>
-            <text class='description-field-right'>{{ patient.identity }}</text>
+            <text class='description-field-right'>{{ appointment.identity }}</text>
         </view>
         <view class='description-field'>
             <text class='description-field-left filed-label-color'>手机号</text>
-            <text class='description-field-right'>{{ patient.phone }}</text>
+            <text class='description-field-right'>{{ appointment.phone }}</text>
         </view>
         <view class='description-field'>
             <text class='description-field-left filed-label-color'>就诊卡号</text>
@@ -68,8 +65,8 @@
         </view>
     </view>
     <view class='description-extra-info'>
-        <text>订单号：{{ appointmentId }}</text>
-        <text>下单时间：{{ appointmentDatetime }}</text>
+        <text>订单号：{{ appointment.rid }}</text>
+        <text>下单时间：{{ appointment.appointment }}</text>
     </view>
 </view>
 <button type='primary' class='btn-fixed-bottom' bindtap='backToIndex'>返回首页</button>
