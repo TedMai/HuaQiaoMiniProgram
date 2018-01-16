@@ -37,4 +37,8 @@
     <view>
         <text selectable="true" space="nbsp">{{ contact }}</text>
     </view>
+	<view class='field-label'>
+        <label>全景展示</label>
+    </view>
+        <video src="http://video.thinmelon.cc/su.mp4" controls class='videoPlayer'></video>
 </view>

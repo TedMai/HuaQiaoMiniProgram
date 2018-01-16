@@ -7,9 +7,9 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		user: 33,
-		message: '',
-		btnText: ''
+		isBinding: false,
+		mobile: '',
+		message: ''
 	},
 
 	/**
@@ -18,27 +18,34 @@ Page({
 	onLoad: function (options) {
 		var that = this;
 
-		wx.request({
-			url: __API__.getTableDetails('user', this.data.user),
-			data: {},
-			dataType: 'json',
-			header: { 'content-type': 'application/json' },
-			success: response => {
-				if (null === response.data[0].phone) {
-					//  绑定
-					that.data.btnText = '绑定';
-				} else {
-					//  解绑
-					that.data.btnText = '解绑';
-				}
-				that.setData({
-					btnText: that.data.btnText
-				})
-			},
-			fail: error => {
-				console.error(error);
+		wx.getStorage({
+			key: 'user',
+			success: function (res) {
+				wx.request({
+					url: __API__.getTableDetails('user', res.data),
+					data: {},
+					dataType: 'json',
+					header: { 'content-type': 'application/json' },
+					success: response => {
+						if (null === response.data[0].phone) {
+							//  绑定
+							that.data.isBinding = false;
+						} else {
+							//  解绑
+							that.data.mobile = response.data[0].phone;
+							that.data.isBinding = true;
+						}
+						that.setData({
+							mobile: that.data.mobile,
+							isBinding: that.data.isBinding
+						})
+					},
+					fail: error => {
+						console.error(error);
+					}
+				}); /** end of wx.request */
 			}
-		});
+		});	/** end of wx.getStorage */
 	}
 
 })

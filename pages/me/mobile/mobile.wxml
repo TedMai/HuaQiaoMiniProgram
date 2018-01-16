@@ -1,3 +1,6 @@
 <!--pages/me/mobile/mobile.wxml-->
-
-<component-sample-verification btn-sms-text='发送' btn-submit-text='绑定' user-id='{{ user }}'></component-sample-verification>
+<view wx:if='{{ isBinding }}' class='binding'>
+    <text>已绑定手机号：{{ mobile }}</text>
+	<button type='primary' size='mini'>申请解绑</button>
+</view>
+<component-sample-verification wx:else  btn-sms-text='发送' btn-submit-text='绑定' user-id='{{ user }}'></component-sample-verification>
