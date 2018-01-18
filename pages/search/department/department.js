@@ -93,7 +93,7 @@ Page({
 	 * 跳转 - 当前科室下的所有医生列表
 	 */
 	toShowDoctorList: function (e) {
-		wx.redirectTo({
+		wx.navigateTo({
 			url: '/pages/list/doctor/doctor?department=' + JSON.stringify(e.currentTarget.dataset.department)
 		})
 	}

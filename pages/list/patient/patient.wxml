@@ -1,6 +1,6 @@
 <!--pages/list/patient/patient.wxml-->
 <view class='container'>
-    <radio-group>
+    <radio-group bindchange='radioChanged'>
         <view wx:for='{{ patients }}' wx:key='{{ item.pid }}' class='patient-list'>
             <radio value='{{ item.pid }}' />
             <view data-patient='{{ item }}' bindtap='onPatientSelected'>
@@ -23,6 +23,7 @@
 </view>
 
 <view class='patient-bottom btn-fixed-bottom'>
-    <button type='warn'>删除</button>
+    <button type='default' bindtap='deletePatient'>删除</button>
     <button type='default' bindtap='addPatient'>新增就诊人</button>
+	<button type='primary' bindtap='confirmPatientSelected'>确认</button>
 </view>

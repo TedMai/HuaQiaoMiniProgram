@@ -9,7 +9,8 @@ Page({
 	data: {
 		isBinding: false,
 		mobile: '',
-		message: ''
+		message: '',
+		userId: 0
 	},
 
 	/**
@@ -21,6 +22,10 @@ Page({
 		wx.getStorage({
 			key: 'user',
 			success: function (res) {
+				that.data.userId = res.data;
+				/**
+				 * 查看是否已绑定手机号
+				 */
 				wx.request({
 					url: __API__.getTableDetails('user', res.data),
 					data: {},
@@ -36,6 +41,7 @@ Page({
 							that.data.isBinding = true;
 						}
 						that.setData({
+							userId: that.data.userId,
 							mobile: that.data.mobile,
 							isBinding: that.data.isBinding
 						})

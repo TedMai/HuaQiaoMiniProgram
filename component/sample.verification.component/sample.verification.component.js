@@ -24,8 +24,8 @@ Component({
 		mobile: '',
 		hasSent: false,
 		timerId: 0,
-		requestId: 'EC478337-BE62-49B7-A707-7A8551F2B5B9',
-		bizId: '535405416007443302^0',
+		requestId: '',
+		bizId: '',
 		countDownSeconds: __INTERVAL_SECONDS__
 	},
 	/**
@@ -165,10 +165,6 @@ Component({
 		},
 
 		combineMobile: function (e) {
-			console.log("======= combineMobile =======");
-			console.log(e);
-			console.log(this.data);
-
 			const that = this;
 
 			wx.request({
@@ -185,9 +181,13 @@ Component({
 					'content-type': 'application/json'
 				},
 				success: response => {
-					console.log(response);
 					if (response.data.code === 0) {
-
+						wx.showToast({
+							title: '关联成功',
+							complete: () => {
+								setTimeout(() => { wx.navigateBack({}); }, 2000);
+							}
+						})
 					} else if (response.data.code === -100 && response.data.msg.errno === 1062) {
 						that.setData({
 							message: '该手机号码已注册!'
